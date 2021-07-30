@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <title> Temp </title>
+
+    <!-- Hojas estilp -->
+    <link rel="stylesheet" href="./normalize.css">
+    <link rel="stylesheet" href="./main.css">
+
+    <!-- fuentes -->
+    <link href="https://fonts.googleapis.com/css?family=Cardo:400,700|Oswald" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="head">
+        <i class="fas fa-power-off icon-ON"></i>
+        <h1 class="head-title">
+            Temperatura Bogotá!
+        </h1>
+        <i class="fas fa-city icon-CITY"></i>
+    </div>
+
+    <div class="content">
+        <div class="content-indicators">
+            <div class="temp_view view">
+                <i class="fas fa-thermometer-quarter icon-data ic-temp"></i>
+                <span class="label_view">Temperatura</span>
+                <div class="dates_view">10</div>
+                <label class="temps unity"> ° C</label>
+            </div>
+            <div class="humidity_view view">
+                <i class="fas fa-tint icon-data ic-hum"></i>
+                <span class="label_view">Humedad</span>
+                <div class="dates_view">20</div>
+                <label class="humiditys unity">%</label>
+            </div>
+        </div>
+        <div class="content-status">
+            <div class="status-indicators">
+                <div class="legend-status">
+                    <label class="status-legend"> <i class="fas fa-star i-ON"></i> Connect </label>
+                    <label class="status-legend"> <i class="fas fa-star i-OFF"></i> Disconnect </label>
+                </div>
+
+                <label class="status-broker"> <i class="fas fa-star status-starticons"></i> Status Cloud </label>
+                <label class="status-ESP32"> <i class="fas fa-star status-starticons"></i> Status ESP32</label>
+            </div>
+            <div class="status-times">
+                <div class="status-hour hour-act">     
+                    <label class="status-hour-label"> Current Time </label>
+                    <span class="status-hour-span hour-act-span">9:25:20</span>
+                </div>
+                <div class="status-hour hour-ESP32">   
+                    <label class="status-hour-label"> Time ESP32 </label>
+                    <span class="status-hour-span hour-ESP32-span">10:25:20</span>
+                </div>
+                <div class="status-hour hour-enddate">
+                    <label class="status-hour-label"> Time of the last data </label>  
+                    <span class="status-hour-span hour-enddate-span">11:20:30</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="foot">
+        <div class="redes">
+            <div class="instagram">
+            <a href="https://instagram.com/_23ft_"  class = "red-a" target="_blank"> <i class="fab fa-instagram icon-foot"></i> </a>
+            </div>
+            <div class="github">
+            <a href="https://github.com/23ft"  class = "red-a" target="_blank"> <i class="fab fa-github icon-foot"></i> </a>
+            </div>
+        </div>
+        <div class="f23ft">
+            <span class="23ft.fama"> Created by 23ft </span>
+        </div>
+        
+    </div>
+</body>
+
+</html>

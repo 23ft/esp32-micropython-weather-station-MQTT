@@ -1,0 +1,546 @@
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+    background-color: #414141;
+    font-family: 'Cardo', serif;   
+}
+
+/* 
+~~~~~~~~~~~~~~~~~
+    Iconos
+~~~~~~~~~~~~~~~~~
+*/
+
+.icon-ON {
+    /* color: lightcoral; */
+    /* width: 3.3vw; */
+    font-size: 2.6vw;
+    color: #333;
+    cursor: pointer;
+    /* outline: 2px solid black; */
+
+}
+
+.icon-ON:hover {
+    color: #ccc;
+}
+
+.icon-CITY {
+    /* width: 3.3vw; */
+    /* outline: 2px solid black; */
+    font-size: 2.6vw;
+    color: #333;
+}
+
+.icon-data {
+    color: #ccc;
+    text-align: center;
+    font-size: 3.5vw;
+    width: 3.3vw;
+    /* outline: 2px solid black; */
+}
+
+/* 
+~~~~~~~~~~~~~~~~~
+    Containers.
+~~~~~~~~~~~~~~~~~
+*/
+
+
+/* Container content */
+.content {
+    margin: 1vh auto;
+    display: flex;
+    flex-direction: row;
+    /* background-color: #888;
+    border-radius: 10px; */
+    font-family: 'Ubuntu', sans-serif;
+    width: 70%;
+    height: 60vh;
+    align-items: flex-start;
+}
+
+.content-indicators {
+    background-color: #888;
+    border-radius: 10px;
+    font-family: 'Ubuntu', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+    height: 100%;
+    /* outline: 2px solid black; */
+    order: 2;
+    margin: 0px 0px 0px 5px;
+}
+
+.content-status {
+    /* background-color: #888; */
+    /* border-radius: 10px; */
+    font-family: 'Ubuntu', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    order: 1;
+    width: 30%;
+    height: 100%;
+    align-items: flex-start;
+    /* outline: 2px solid black; */
+}
+
+/* Container head */
+.head, .foot {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0px 0px;
+    width: 70%;
+    height: 19vh;
+    background-color: #888888;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0px auto;
+    border-style: solid;
+    border-top: 0;
+    border-width: 1.7px;
+    border-color: #aaa;
+    border-radius: 10px;
+}
+
+/* Titulo head */
+.head-title {
+    margin: 0;
+    font-family: 'Oswald', sans-serif;
+    font-weight: bold;
+    font-size: 2.6vw;
+    text-transform: uppercase;
+}
+
+/* View data*/
+.view {
+    background-color: rgba(200, 200, 200, .4);
+    display: flex;
+    flex-direction: row;
+    width: 30vw;
+    height: 10vh;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1em;
+    border: 1px solid rgba(200, 200, 200, .5);
+    border-radius: 10px;
+    margin: 5px 0px 5px 0px;
+}
+
+.label_view {
+    text-align: center;
+    width: 15vw;
+    /* outline: 2px solid black; */
+    margin: 0px 0px 0px 10px;
+    font-size: 2.1vw;
+    font-Weight: 500;
+}
+
+.dates_view{
+    /* outline: 2px solid black; */
+    margin: 0px 1vw 0px 1vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.1vw;
+    font-weight: bold;
+    width: 5vw;
+    height: 5vh;
+    padding: 1vh 1vw;
+    border-radius: 10px;
+    background-color: lightgreen;
+    color: black;
+}
+
+.unity {
+    width: 60px;
+    display: inline-block;
+    text-align: center;
+    /* width: 3.3vw; */
+    /* outline: 2px solid; */
+    font-size: 2.1vw;
+}
+
+/* 
+~~~~~~~~~~~~~~~~~
+    Status.
+~~~~~~~~~~~~~~~~~
+*/
+
+.status-broker, .status-ESP32 {
+    font-size: 2vw;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.status-starticons{
+    color: #555;
+    font-size: 2vw;
+    /* outline: 2px solid black; */
+}
+
+/* Times */
+
+.status-indicators{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    height: 47%;
+    /* outline: 5px pink solid; */
+    background-color: #888;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.status-times {
+    /* outline: 7px solid red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; 
+    width: 100%;
+    height: 52%;
+    border-radius: 10px;
+    background-color: #888;
+    padding: 0px 5px;
+}
+
+.status-hour {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background-color: rgba(200, 200, 20, .4);
+    border-radius: 10px;
+    padding: 1vh 1.5vw;
+    margin: 1vh 0px;
+    /* outline: 2px solid black; */
+}
+
+.status-hour-label {
+    /* outline: 2px solid black; */
+    display: flex;
+    align-items: center;
+    justify-content: justify;
+    width: 10vw;
+    height: 6vh;
+    font-size: 1.3vw;
+    font-weight: 700;
+}
+
+.status-hour-span {
+    color: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    height: 100%;
+    border-radius: 0px 10px 10px 0px;
+    background-color: #333;
+}
+
+
+
+/* LEYENDA SOBRE COLOR ESTRELLA */
+.legend-status{
+    display: flex;
+    background-color: lightcoral;
+    border-radius: 6px;
+    padding: 2vh 1vw;
+    width: 100%;
+    /* outline: 2px solid black; */
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 1vw;
+}
+
+.status-legend{
+    /* outline: 2px solid black; */
+    font-size: 1.5vw;
+    /* text-transform: uppercase; */
+}
+
+.i-ON {
+    font-size: 1.3vw;
+    color: #e4cd00;
+}
+
+.i-OFF {
+    font-size: 1.3vw;
+    color: #555;
+}
+
+/* 
+~~~~~~~~~~~~~~~~~
+    Foot
+~~~~~~~~~~~~~~~~~
+*/
+
+.foot {
+    flex-direction: column;
+    justify-content: center;
+}
+
+.foot .redes {
+    display: flex;
+    flex-direction: row;
+    /* outline: 2px solid black; */
+}
+.foot .f23ft {
+    font-family: 'Oswald', sans-serif;
+    margin-top: 1vh;
+    font-size: 1.2vw;    
+}
+
+.icon-foot {
+    color: #fff;
+    font-size: 3vw;
+    margin: 0px 1vw 0px 1vw;
+}
+
+.icon-foot:hover {
+    color: rgba(200, 200, 200, .5)
+}
+
+.red-a {
+    text-decoration: none;
+    color: #000;
+}
+
+
+/* Responsive */
+@media (max-width: 1033px) {
+    .icon-data {
+        /* outline: 2px solid black; */
+        width: 34px;
+        height: 39px;
+        font-size: 35px;
+    }
+
+    .status-starticons {
+        font-size: 28px;
+    }
+
+    .dates_view, .unity {
+        font-size: 21.399px;
+    }
+
+    .dates_view {
+        width: 51px;
+        height: 25.5px;
+    }
+
+    .icon-foot {
+        font-size: 33px;
+    }
+
+    .label_view{
+        font-size: 23.6px;
+        width: 152px;
+    }
+
+    .view {
+        /* width: 33.2vw */
+        width: 337px;
+    }
+
+    .icon-ON, .icon-CITY, .head-title {
+        font-size: 30px;
+    }
+
+    .head, .foot {
+        width: 75%;
+    }
+
+    .content {
+        /* outline: 2px solid red; */
+        width: 75%
+    }
+
+    .status-legend {
+        font-size: 15px;
+        /* outline: 2px solid black; */
+    }
+    .status-hour-label {
+        width: 97px;
+        font-size: 14.6px;
+    }
+    .foot .f23ft {
+        font-size: 13.5px;
+    }
+
+    .status-ESP32, .status-broker {
+        /* outline: 2px solid; */
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        font-size: 22.5px;
+    }
+}
+
+@media (max-width: 991px) {
+    .status-starticons {
+        font-size: 23px;
+    }
+}
+
+@media (max-width: 971px){
+
+    .content {
+        width: 90%
+    }
+
+    .head, .foot {
+        width: 90%;
+    }
+
+    .status-legend i{
+        font-size: 14.5px;
+    }
+}
+
+@media (max-width: 800px) {
+
+    body {
+        padding: 0px 3px;
+    }
+
+    .content, .head, .foot {
+        width: 100%;    
+    }
+
+}
+
+@media (max-width: 731px) {
+    .content, .head, .foot {
+        margin: 0px auto;
+        width: 100%;
+        height: auto;
+        /* min-width: 700px; */
+    }
+
+    .content {
+        /* outline: 2px solid red; */
+        height: fit-content;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .head , .foot{
+        padding: 5vh 1vw;
+    }
+
+    .content-indicators, .content-status {
+        margin: 0;
+        width: 100%;
+        height: fit-content;
+    }
+
+    .content-status {
+        /* justify-content: center; */
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin: 10px 0px 2.5px 0px;
+    }
+
+    .content-indicators {
+        padding: 12px 0px;
+        margin: 2.5px 0px 10px 0px;
+    }
+
+    /* Trabajando con dev content-status */
+
+    .status-indicators, .status-times {
+        width: 50%;
+        height: 30vh;
+        justify-content: space-evenly;
+        /* align-items: center; */
+    }
+
+    /* status indicadores */
+    .status-indicators {
+        align-items: center;
+        margin: 0px 2.5px 0px 0px;
+    }
+
+    .status-indicators .legend-status {
+        width: 90%;
+    }
+
+    .status-indicators .status-ESP32, .status-broker {
+        /* outline: 2px solid black; */
+        width: 213px;
+    }
+
+    /* status times */
+    .status-times {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .status-hour {
+        margin: 5.12px;
+        width: 220px;
+    }
+
+    .status-hour-span {
+        width:104px;
+        height: 100%;
+    }
+
+    .status-hour-label {
+        width: 100px;
+    }
+}
+
+@media (max-width: 476px) {
+    .status-hour {
+        width: 100%;
+    }
+
+    .status-legend {
+        font-size: 13px;
+    }
+
+    .status-hour-label {
+        margin: 0px 3px 0px 0px;
+    }
+
+    .status-starticons {
+        font-size: 20px;
+    }
+
+    .status-indicators .status-ESP32, .status-broker {
+        font-size: 20px;
+        width: 100%;   
+    }
+
+    .status-indicators .legend-status {
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 397px) {
+    .status-legend {
+        font-size: 11.5px;
+    }
+
+    .status-hour-label {
+        font-size: 13px;
+    }
+
+    .status-indicators .status-ESP32, .status-broker {
+        font-size: 17px;
+        /* width: 100%; */
+    }
+
+}
