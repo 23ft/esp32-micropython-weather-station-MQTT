@@ -2,11 +2,11 @@
     box-sizing: border-box;
 }
 
-
 body {
     background-color: #414141;
-    font-family: 'Cardo', serif;   
+    font-family: 'Cardo', serif;
 }
+
 
 /* 
 ~~~~~~~~~~~~~~~~~
@@ -14,18 +14,42 @@ body {
 ~~~~~~~~~~~~~~~~~
 */
 
-.icon-ON {
-    /* color: lightcoral; */
-    /* width: 3.3vw; */
+
+/* .icon-ON {
+    color: lightcoral;
+    width: 3.3vw;
     font-size: 2.6vw;
     color: #333;
     cursor: pointer;
-    /* outline: 2px solid black; */
-
+    outline: 2px solid black;
 }
 
 .icon-ON:hover {
     color: #ccc;
+} */
+
+#check-ON {
+    display: none;
+}
+
+.btn-ON {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    font-size: 2.6vw;
+    color: #333;
+    cursor: pointer;
+    background-color: #ddd;
+    border-radius: 100%;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
+}
+
+#check-ON:checked+.btn-ON {
+    color: rgba(0, 160, 0, 0.7);
+    background-color: #ddd;
+    box-shadow: inset 0 10px 15px rgba(0, 0, 0, 0.7);
 }
 
 .icon-CITY {
@@ -43,6 +67,7 @@ body {
     /* outline: 2px solid black; */
 }
 
+
 /* 
 ~~~~~~~~~~~~~~~~~
     Containers.
@@ -51,9 +76,10 @@ body {
 
 
 /* Container content */
+
 .content {
     margin: 1vh auto;
-    display: flex;
+    display: none;
     flex-direction: row;
     /* background-color: #888;
     border-radius: 10px; */
@@ -92,8 +118,11 @@ body {
     /* outline: 2px solid black; */
 }
 
+
 /* Container head */
-.head, .foot {
+
+.head,
+.foot {
     display: flex;
     flex-wrap: wrap;
     padding: 0px 0px;
@@ -110,7 +139,13 @@ body {
     border-radius: 10px;
 }
 
+.foot {
+    display: none;
+}
+
+
 /* Titulo head */
+
 .head-title {
     margin: 0;
     font-family: 'Oswald', sans-serif;
@@ -119,7 +154,9 @@ body {
     text-transform: uppercase;
 }
 
+
 /* View data*/
+
 .view {
     background-color: rgba(200, 200, 200, .4);
     display: flex;
@@ -143,7 +180,7 @@ body {
     font-Weight: 500;
 }
 
-.dates_view{
+.dates_view {
     /* outline: 2px solid black; */
     margin: 0px 1vw 0px 1vw;
     display: flex;
@@ -168,27 +205,30 @@ body {
     font-size: 2.1vw;
 }
 
+
 /* 
 ~~~~~~~~~~~~~~~~~
     Status.
 ~~~~~~~~~~~~~~~~~
 */
 
-.status-broker, .status-ESP32 {
+.status-broker,
+.status-ESP32 {
     font-size: 2vw;
     text-transform: uppercase;
     font-weight: 600;
 }
 
-.status-starticons{
+.status-starticons {
     color: #555;
     font-size: 2vw;
     /* outline: 2px solid black; */
 }
 
+
 /* Times */
 
-.status-indicators{
+.status-indicators {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -204,7 +244,7 @@ body {
     /* outline: 7px solid red; */
     display: flex;
     flex-direction: column;
-    justify-content: space-around; 
+    justify-content: space-around;
     width: 100%;
     height: 52%;
     border-radius: 10px;
@@ -246,9 +286,9 @@ body {
 }
 
 
-
 /* LEYENDA SOBRE COLOR ESTRELLA */
-.legend-status{
+
+.legend-status {
     display: flex;
     background-color: lightcoral;
     border-radius: 6px;
@@ -260,7 +300,7 @@ body {
     margin-bottom: 1vw;
 }
 
-.status-legend{
+.status-legend {
     /* outline: 2px solid black; */
     font-size: 1.5vw;
     /* text-transform: uppercase; */
@@ -275,6 +315,7 @@ body {
     font-size: 1.3vw;
     color: #555;
 }
+
 
 /* 
 ~~~~~~~~~~~~~~~~~
@@ -292,10 +333,11 @@ body {
     flex-direction: row;
     /* outline: 2px solid black; */
 }
+
 .foot .f23ft {
     font-family: 'Oswald', sans-serif;
     margin-top: 1vh;
-    font-size: 1.2vw;    
+    font-size: 1.2vw;
 }
 
 .icon-foot {
@@ -315,6 +357,7 @@ body {
 
 
 /* Responsive */
+
 @media (max-width: 1033px) {
     .icon-data {
         /* outline: 2px solid black; */
@@ -322,47 +365,41 @@ body {
         height: 39px;
         font-size: 35px;
     }
-
     .status-starticons {
         font-size: 28px;
     }
-
-    .dates_view, .unity {
+    .dates_view,
+    .unity {
         font-size: 21.399px;
     }
-
     .dates_view {
         width: 51px;
         height: 25.5px;
     }
-
     .icon-foot {
         font-size: 33px;
     }
-
-    .label_view{
+    .label_view {
         font-size: 23.6px;
         width: 152px;
     }
-
     .view {
         /* width: 33.2vw */
         width: 337px;
     }
-
-    .icon-ON, .icon-CITY, .head-title {
+    .icon-ON,
+    .icon-CITY,
+    .head-title {
         font-size: 30px;
     }
-
-    .head, .foot {
+    .head,
+    .foot {
         width: 75%;
     }
-
     .content {
         /* outline: 2px solid red; */
         width: 75%
     }
-
     .status-legend {
         font-size: 15px;
         /* outline: 2px solid black; */
@@ -374,8 +411,8 @@ body {
     .foot .f23ft {
         font-size: 13.5px;
     }
-
-    .status-ESP32, .status-broker {
+    .status-ESP32,
+    .status-broker {
         /* outline: 2px solid; */
         display: flex;
         flex-direction: row;
@@ -391,58 +428,55 @@ body {
     }
 }
 
-@media (max-width: 971px){
-
+@media (max-width: 971px) {
     .content {
         width: 90%
     }
-
-    .head, .foot {
+    .head,
+    .foot {
         width: 90%;
     }
-
-    .status-legend i{
+    .status-legend i {
         font-size: 14.5px;
     }
 }
 
 @media (max-width: 800px) {
-
     body {
         padding: 0px 3px;
     }
-
-    .content, .head, .foot {
-        width: 100%;    
+    .content,
+    .head,
+    .foot {
+        width: 100%;
     }
-
 }
 
 @media (max-width: 731px) {
-    .content, .head, .foot {
+    .content,
+    .head,
+    .foot {
         margin: 0px auto;
         width: 100%;
         height: auto;
         /* min-width: 700px; */
     }
-
     .content {
         /* outline: 2px solid red; */
         height: fit-content;
         flex-direction: column;
         align-items: center;
     }
-
-    .head , .foot{
+    .head,
+    .foot {
         padding: 5vh 1vw;
     }
-
-    .content-indicators, .content-status {
+    .content-indicators,
+    .content-status {
         margin: 0;
         width: 100%;
         height: fit-content;
     }
-
     .content-status {
         /* justify-content: center; */
         flex-direction: row;
@@ -450,52 +484,44 @@ body {
         align-items: center;
         margin: 10px 0px 2.5px 0px;
     }
-
     .content-indicators {
         padding: 12px 0px;
         margin: 2.5px 0px 10px 0px;
     }
-
     /* Trabajando con dev content-status */
-
-    .status-indicators, .status-times {
+    .status-indicators,
+    .status-times {
         width: 50%;
         height: 30vh;
         justify-content: space-evenly;
         /* align-items: center; */
     }
-
     /* status indicadores */
     .status-indicators {
         align-items: center;
         margin: 0px 2.5px 0px 0px;
     }
-
     .status-indicators .legend-status {
         width: 90%;
     }
-
-    .status-indicators .status-ESP32, .status-broker {
+    .status-indicators .status-ESP32,
+    .status-broker {
         /* outline: 2px solid black; */
         width: 213px;
     }
-
     /* status times */
     .status-times {
         justify-content: center;
         align-items: center;
     }
-
     .status-hour {
         margin: 5.12px;
         width: 220px;
     }
-
     .status-hour-span {
-        width:104px;
+        width: 104px;
         height: 100%;
     }
-
     .status-hour-label {
         width: 100px;
     }
@@ -505,42 +531,35 @@ body {
     .status-hour {
         width: 100%;
     }
-
     .status-legend {
         font-size: 13px;
     }
-
     .status-hour-label {
         margin: 0px 3px 0px 0px;
     }
-
     .status-starticons {
         font-size: 20px;
     }
-
-    .status-indicators .status-ESP32, .status-broker {
+    .status-indicators .status-ESP32,
+    .status-broker {
         font-size: 20px;
-        width: 100%;   
+        width: 100%;
     }
-
     .status-indicators .legend-status {
         width: 100%;
     }
 }
 
-
 @media (max-width: 397px) {
     .status-legend {
         font-size: 11.5px;
     }
-
     .status-hour-label {
         font-size: 13px;
     }
-
-    .status-indicators .status-ESP32, .status-broker {
+    .status-indicators .status-ESP32,
+    .status-broker {
         font-size: 17px;
         /* width: 100%; */
     }
-
 }

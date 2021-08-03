@@ -23,25 +23,27 @@
 
 <body>
     <div class="head">
-        <i class="fas fa-power-off icon-ON"></i>
+        <input type="checkbox" id="check-ON">
+        <label for="check-ON" class="btn-ON" id="btn-connect"> <i class="fas fa-power-off"></i> </label>
+
         <h1 class="head-title">
             Temperatura Bogotá!
         </h1>
         <i class="fas fa-city icon-CITY"></i>
     </div>
 
-    <div class="content">
+    <div class="content" id="content">
         <div class="content-indicators">
             <div class="temp_view view">
                 <i class="fas fa-thermometer-quarter icon-data ic-temp"></i>
                 <span class="label_view">Temperatura</span>
-                <div class="dates_view">10</div>
+                <div class="dates_view" id="view_temp">10</div>
                 <label class="temps unity"> ° C</label>
             </div>
             <div class="humidity_view view">
                 <i class="fas fa-tint icon-data ic-hum"></i>
                 <span class="label_view">Humedad</span>
-                <div class="dates_view">20</div>
+                <div class="dates_view" id="view_hum">20</div>
                 <label class="humiditys unity">%</label>
             </div>
         </div>
@@ -52,7 +54,7 @@
                     <label class="status-legend"> <i class="fas fa-star i-OFF"></i> Disconnect </label>
                 </div>
 
-                <label class="status-broker"> <i class="fas fa-star status-starticons"></i> Status Cloud </label>
+                <label class="status-broker"> <i class="fas fa-star status-starticons" id="cloud_status"></i> Status Cloud </label>
                 <label class="status-ESP32"> <i class="fas fa-star status-starticons"></i> Status ESP32</label>
             </div>
             <div class="status-times">
@@ -87,6 +89,7 @@
 
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js" type="text/javascript"></script>
     <script src="./app.js" type="module"></script>
 </body>
 
