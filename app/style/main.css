@@ -140,7 +140,8 @@ body {
 }
 
 .foot {
-    display: none;
+    /* display: none; */
+    margin: 2px auto 0px auto;
 }
 
 
