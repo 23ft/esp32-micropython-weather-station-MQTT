@@ -6,6 +6,8 @@ export const view_hum = document.getElementById('view_hum');
 export const cloud_status = document.getElementById('cloud_status');
 
 export const content = document.getElementById("content");
+export const foot = document.getElementById("foot");
+
 
 
 

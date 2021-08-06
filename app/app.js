@@ -1,5 +1,5 @@
-import { connectMQTT, client, messagePublish, statusClient } from "./modules/mqtt.js";
-import { btn_connect, view_hum, view_temp, cloud_status, content } from "./elements.js";
+import { connectMQTT, client, messagePublish, statusClient, closeConnection } from "./modules/mqtt.js";
+import { btn_connect, view_hum, view_temp, cloud_status, content, foot } from "./elements.js";
 
 var eventAppStatusID, smsPayload, smsTopic, concl;
 
@@ -17,28 +17,39 @@ function statusApp() {
         console.log("Connected with: " + client);
         cloud_status.style.color = "#e4cd00";
         clearInterval(eventAppStatusID);
+        alert("You are already connect for recived information!");
     }
 }
 
 btn_connect.addEventListener("click", () => {
 
     if (concl) {
-        // btn_connect.style.color = "#333"
-        // btn_connect.style.border = "none"
-
+        clearInterval(eventAppStatusID);
         content.style.display = "none";
         concl = false;
+        if (closeConnection()) {
+            console.log("Cerrando conexion")
+            cloud_status.style.color = "#555"
+
+            smsPayload = '';
+            smsTopic = '';
+
+            view_temp.innerHTML = '';
+            view_hum.innerHTML = '';
+            alert("You are disconnect from broker!");
+
+
+
+        }
 
     } else {
-        // btn_connect.style.color = "#ccc"
-        // btn_connect.style.border = "2px inset #ccc"
-        // btn_connect.style.borderRadius = "10px"
-
         concl = true;
         eventAppStatusID = "";
         content.style.display = "flex";
 
+
         connectMQTT(sms);
+        btn_connect.style.disable = "true"
         eventAppStatusID = setInterval(statusApp, 1000);
     }
 })

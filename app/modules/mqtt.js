@@ -11,6 +11,7 @@ var topicSub = [
 // Callback for failure connection with broker MQTT.
 const failureConnection = () => {
     alert("Error try connect to broker [" + host + "]");
+    statusClient = false;
 }
 
 // Connection finish, client is disconnect from broker.
@@ -42,6 +43,7 @@ export const messageNew = (messageObject) => {
 export const connectLost = (responseObject) => {
     if (responseObject.errorCode !== 0) {
         console.log("Connection is lost, error log is: " + responseObject.errorMessage);
+        statusClient = false;
     }
 }
 
