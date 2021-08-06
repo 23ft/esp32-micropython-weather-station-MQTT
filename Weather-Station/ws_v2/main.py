@@ -93,3 +93,5 @@ class WeatherStation():
 station = WeatherStation(pinDHT11=pins["DHT11"])
 if station.MQTTconnect():
     station.Run()
+
+# popo
