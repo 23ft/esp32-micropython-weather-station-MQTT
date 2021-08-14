@@ -1,15 +1,20 @@
 import { connectMQTT, client, messagePublish, statusClient, closeConnection } from "./modules/mqtt.js";
 import { btn_connect, view_hum, view_temp, cloud_status, content, foot } from "./elements.js";
 
-var eventAppStatusID, smsPayload, smsTopic, concl;
+var eventAppStatusID, smsPayload, smsTopic, concl, jsondata;
 
 const sms = (smsObj) => {
     smsTopic = smsObj.destinationName;
     smsPayload = smsObj.payloadString;
 
-    if (smsTopic == "stationESP32/data") {
-        view_temp.innerHTML = "" + smsPayload;
-    }
+    console.log(smsTopic + ":" + smsPayload + "\n");
+
+    jsondata = JSON.parse(smsPayload)
+
+    console.log(jsondata.Hum + "\n\n")
+
+    view_temp.innerHTML = "" + jsondata.Temp;
+    view_hum.innerHTML = "" + jsondata.Hum;
 }
 
 function statusApp() {

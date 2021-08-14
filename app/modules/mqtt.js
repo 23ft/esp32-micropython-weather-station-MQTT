@@ -5,7 +5,7 @@ export var client, infod, key_user, clientId, message, statusClient;
 var host = "35.199.113.247";
 var port = 8083;
 var topicSub = [
-    "stationESP32/data"
+    "tempTabogo/DHT11"
 ];
 
 // Callback for failure connection with broker MQTT.
