@@ -1,9 +1,9 @@
 import utime
-from machine import unique_id
+from machine import unique_id, soft_reset
 import ubinascii
 import ujson
 import _thread
-from umqtt.simple2 import MQTTClient
+from lib.umqtt.simple2 import MQTTClient
 global pins
 
 
@@ -23,6 +23,7 @@ class WeatherStation():
         self.mqtt_topics_sub = []
         self.mqtt_topics_pub = []
         self.flag_broker = False
+
         #
         #     ~Flags Threads~
         #
@@ -35,8 +36,8 @@ class WeatherStation():
         #
         #     ~Thread 0 Propietys~
         #
-        self.cont_send = 0
-        self.topicx = b'tempTabogo/DHT11'
+        self.jsons_send = 0
+        self.topicx = b 'tempTabogo/DHT11'
         self.sensor = self.dht11
         
         # probe pin for stop program.
@@ -66,28 +67,24 @@ class WeatherStation():
         except:
             print("[Client MQTT] Error in connection client to broker")
 
-    def reconBroker(self):
-        try:
-            while not (self.flagBroker_th1 and self.flagBroker_th0):
-                print("[RECON] Wait for close all threads!")
-                pass
-
-            # reinitialize flags.
-            self.flagStop_ths = False
-            self.flagBrokerError_ths = False
-            self.flagBroker_th0 = False
-            self.flagBroker_th1 = False
-            self.flagClientCon = False
-
-            # reconnection
-            del self.client
-            self.MQTTconnect()
-            if self.flagClientCon:
-                print("[RECON] Success full connect to broker! Running program...")
-                self.Run()
-        except:
-            print("[RECON] Error in reconnection to Broker")
+    def resetMachine(self):
+        self.flagStop_ths = True
         
+        while not (self.flagBroker_th1 and self.flagBroker_th0):
+            pass
+        
+        print("[resetMachine] Wait 3 seconds for not problems with threads...")
+        utime.sleep(3)
+        
+        print("[resetMachine] Threads was stoped, continue with reset")
+        json_file = open('./data.json', 'w')
+        
+        json_file.write(self.jsonGod)
+        json_file.close()
+        print("[resetMachine] Json of program is save in file data.json! reset...")
+        
+                
+
     def stop(self):
         self.flagStop_ths = True
         
@@ -101,7 +98,7 @@ class WeatherStation():
     # Thread 1 = Recived sms from broker.
     def thread0(self):
         print("[Thread 0] Start thread!")
-        print("[Thread 1] ID = ", _thread.get_ident())
+        print("[Thread 0] ID = ", _thread.get_ident())
 
         while True:
             if self.flagStop_ths:
@@ -118,30 +115,27 @@ class WeatherStation():
 
             self.temp = self.sensor.temperature()
             self.hum = self.sensor.humidity()
-
-            self.cont_send += 1
+            
+            # Contador numero de JSON enviados.
+            self.jsons_send += 1
+            
+            # creacion JSON.
             self.json_broker = {
-                "id": self.cont_send,
+                "id": self.jsons_send,
                 "Temp": self.temp,
                 "Hum": self.hum
             }
-
-            self.json_broker = ujson.dumps(self.json_broker)
+            
+            # convierte un Obj Python a JSON string para poder ser enviada.
+            self.jsonGod = ujson.dumps(self.json_broker)
             try:
-                self.client.publish(self.topicx, self.json_broker)
+                self.client.publish(self.topicx, self.jsonGod)
                 print(self.json_broker)
             except:
-                if not self.flagBrokerError_ths:
-                    self.flagBrokerError_ths = True
-                    print("[Thread 0] Error in publish JSON DATA to broker, posible errors in connection.")
-                    print("[Thread 0] Trying new connection to Broker server")
-                    self.flagBroker_th0 = True
-                    self.flagStop_ths = True
-                    print("[Thread 0] Exit thread 0!")
-                    _thread.exit()
-                else:
-                    continue
-
+                print("[Thread 0] Error to publish JSON ID: ", self.jsons_send, "Trying to publish now...")
+                self.client.publish(self.topicx, self.json_broker)
+                continue
+                
     def thread1(self):
         print("[Thread 1] Start thread!")
         print("[Thread 1] ID = ", _thread.get_ident())
@@ -150,27 +144,23 @@ class WeatherStation():
                 self.flagBroker_th1 = True
                 print("[Thread 1] Exit thread 1!")
                 _thread.exit()
+                
             try:
                 self.client.check_msg()
+                utime.sleep(0.5)
             except:
-                if not self.flagBrokerError_ths:
-                    self.flagBrokerError_ths = True
-                    print('[Thread 1] Error to check new sms from broker, posible error in connection')
-                    print('[Thread 1] Trying new connection to Broker server.')
+                print("[Thread 1] Error in check to new message, trying to check now...")
+                try:
+                    utime.sleep(1) 
+                    self.client.check_msg()
+                except:
+                    print("[Thread 1] Error in new check, soft reset machine...")
                     self.flagBroker_th1 = True
-                    self.flagStop_ths = True
-                    print("[Thread 1] Exit thread 1!")
-                    _thread.exit()
-                else:
-                    continue
+                    self.resetMachine()
     
-    def monitor(self):
+    def monitorThreads(self):
         print("[Monitor] The monitor is initialized!")
         while True:
-            if self.flagBroker_th1 or self.flagBroker_th0 or self.flagStop_ths: 
-                print("[Monitor] Detected error in threads, processing with reconnection to broker")
-                self.reconBroker()
-                
             if self.stop_pin.value() == 1:
                 utime.sleep(2)
                 if self.stop():
@@ -180,7 +170,7 @@ class WeatherStation():
     def Run(self):
         _thread.start_new_thread(self.thread1, ())
         _thread.start_new_thread(self.thread0, ())
-        self.monitor()
+        self.monitorThreads()
 
 
 # Start program!
